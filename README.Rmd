@@ -1,0 +1,14 @@
+---
+title: "README"
+author: "Alexander Rogers"
+date: "2024-03-08"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+read.csv("../data/proficiency.csv")
+```
