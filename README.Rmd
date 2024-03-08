@@ -6,14 +6,415 @@ output: html_document
 ---
 
 ```{r}
-library(tidyverse)
+library("tidyverse")
+library("stringr")
+```
+
+
+   
+"Hoy"
+"las"
+"niñas"         
+"lanza"         
+"pelotas"       
+"pista"         
+"Por"
+"tarde"         
+"bebe"          
+"un"
+"zumo"          
+"comedor"       
+"odia"          
+"niña"          
+"por"
+"travesuras"    
+"Dicen"         
+"ayer"          
+"hombre"        
+"come"          
+"pollo"         
+"bar"
+"Explican"      
+"anteayer"      
+"cocinero"      
+"grita"         
+"receta"        
+"a"
+"camarero"      
+"chico"         
+"busca"         
+"chica"         
+"parque"        
+"mañana"        
+"mejoraron"     
+"plato"         
+"para"          
+"almuerzo"      
+"los"
+"hombres"       
+"firmaron"      
+"contrato"      
+"reunión"       
+"hermana"       
+"gasta"         
+"dinero"        
+"zapatos"       
+"nuevos"        
+"periodista"    
+"imprime"       
+"noticia"       
+"noche"         
+"apagó"         
+"luces"         
+"de" 
+"Normalmente"   
+"abogada"       
+"llama"         
+"desde"         
+"En" 
+"este"          
+"instante"      
+"abuelos"       
+"cambian"       
+"rueda"         
+"su" 
+"coche"         
+"hija"          
+"aprende"       
+"idiomas"       
+"con"
+"amigas"        
+"llena"         
+"gasolina"      
+"diesel"        
+"gritaron"      
+"respuesta"     
+"empleada"      
+"primo"         
+         
+"pelo"          
+"piso"          
+"Avisan"        
+"año"
+"pasado"        
+"todo"          
+"papel"         
+"caro"          
+"semana"        
+"pasada"        
+"factura"       
+"maletas"       
+"unas"          
+"drogas"        
+"investiga"     
+"caso"          
+"carcel"        
+"Piensan"       
+"investigó"     
+"secuestro"     
+"policía"       
+"jefe"          
+"mejoró"        
+"condiciones"   
+"mes"
+"cocinó"        
+"una"
+"tortilla"      
+"fiesta"        
+"compañía"      
+"mandó"         
+"cartas"        
+"correo"        
+"normal"        
+"abuela"        
+"comprende"     
+"al" 
+"abuelo"        
+"durante"       
+"peleas"        
+"recibió"       
+"regalo"        
+"facturó"       
+"guitarra"      
+"aeropuerto"    
+"adivinó"       
+"nombre"        
+"señora"        
+"esperan"       
+"vuelo"         
+"guardan"       
+"ropa"          
+"armario"       
+"recoge"        
+"libros"        
+"biblioteca"    
+"gerente"       
+"escala"        
+"montaña"       
+"hermano"       
+"abraza"        
+"niño"          
+"tienda"        
+"graban"        
+"canción"       
+"mujer"         
+"besa"          
+"cama"          
+"Anuncian"      
+"cancela"       
+"mal"
+"tiempo"        
+"bombero"       
+"fuego"         
+"iglesia"       
+"De" 
+"repente"       
+"nieto"         
+"firma"         
+"carta"         
+"cirujano"      
+"necesita"      
+"tijeras"       
+"operación"     
+"barrió"        
+"suelo"         
+"nieta"         
+"novio"         
+"graba"         
+"grabadora"     
+"compartieron"  
+"helado"        
+"alumna"        
+"mira"          
+"profesora"     
+"aula"          
+"momento"       
+"levantan"      
+"caja"          
+"Creen"         
+"espera"        
+"metro"         
+"estación"      
+"Comentan"      
+"hijo"          
+"cepilla"       
+"perro"         
+"sigue"         
+"cocina"        
+"niños"         
+"llenó"         
+"vaso"          
+"nietas"        
+"escucharon"    
+"cuento"        
+"tío"
+"limpió"        
+"calle"         
+"necesitaron"   
+"ayuda"         
+"guarda"        
+"aleman"        
+"academia"      
+"chicos"        
+"mandaron"      
+"novia"         
+"maestro"       
+"compartió"     
+"respuestas"    
+"anoche"        
+"alumnos"       
+"teléfono"      
+"primera"       
+"vez"
+"cocinaron"     
+"pregunta"      
+"cantante"      
+"Descubren"     
+"ladrón"        
+"cambia"        
+"barren"        
+"escoba"        
+"recogió"       
+"esposa"        
+"caros"         
+"padres"        
+"limpia"        
+"vestido"       
+"baño"          
+"firmó"         
+"escaló"        
+"adivina"       
+"amigos"        
+"investigan"    
+"apagaron"      
+"corta"         
+"cepilló"       
+"necesitó"      
+"aprendió"      
+"manda"         
+"apaga"         
+"salta"         
+"cuerda"        
+"gimnasio"      
+"dibujaron"     
+"corazón"       
+"esposo"        
+"hora"          
+"clase"         
+"grabó"         
+"canceló"       
+"facturaron"    
+"recibe"        
+"dibuja"        
+"pajaro"        
+"llevó"         
+"parag¸as"      
+"cancelan"      
+"adivinaron"    
+"gritó"         
+"barre"         
+"limpian"       
+"mejora"        
+"mujeres"       
+"recogen"       
+"comparte"      
+"llenaron"      
+"escalaron"     
+"colina"        
+"gastan"        
+"imprimen"      
+"levanta"       
+"cortan"        
+"del"
+"cambió"        
+"tía"
+"escucha"       
+"conversaciones"
+"jefa"          
+"ancianos"      
+"aprenden"      
+"imprimió"      
+"abogado"       
+"lleva"         
+"llevaron"      
+"despierta"     
+"sala"          
+"escuchó"       
+"preguntó"      
+"peluqueras"    
+"cepillan"      
+"jefes"         
+"dibujó"        
+"guardó"        
+"esperó"        
+"recibieron"    
+"muchachos"     
+"preguntan"     
+"gastó"         
+"saltó"         
+"cárcel"        
+"pájaro"        
+"alemán"        
+"paragüas"      
+"novios"        
+"nina"          
+"ninas"         
+"nino"          
+"manana"        
+"bano"          
+"ano"
+"companía"      
+"móvil"         
+"camareros"     
+"montana"       
+"ninos"         
+"senora"        
+"condicioens" 
+
+
+```{r}
+
+nsg <- c(
+  "muchacho", "oficina"
+)
+
+
+npl <- c(
+  "puros"
+)
+
+
+vpr <- c(
+  "Cuentan", "fuma"
+)
+
+vpast <- c(
+  "cortó"
+)
+
+det <- c(
+  "el", "la"
+)
+
+
+adv <- c(
+  "ahora"
+)
+
+adj <- c(
+  "sus"
+)
+
+prep <- c(
+  "que", "en"
+)
+
+clitics <- c(
+  "lo"
+)
+
+
+
+
+
+
+data <- read_csv("./data/proficiency.csv") %>% 
+  mutate(
+    IA_LABEL = str_remove_all(IA_LABEL, " "), 
+    IA_LABEL = str_remove_all(IA_LABEL, "\\."), 
+    IA_LABEL = str_replace_all(IA_LABEL, "·", "a"), 
+    IA_LABEL = str_replace_all(IA_LABEL, "Ì", "í"), 
+    IA_LABEL = str_replace_all(IA_LABEL, "È", "é"), 
+    IA_LABEL = str_replace_all(IA_LABEL, "Ò", "n"), 
+    IA_LABEL = str_replace_all(IA_LABEL, "Û", "ó"), 
+  ) %>% 
+  mutate(
+    word_type = case_when(
+      IA_LABEL %in% nsg ~ "nsg", 
+      IA_LABEL %in% npl ~ "npl", 
+      IA_LABEL %in% vpr ~ "vpr", 
+      IA_LABEL %in% vpast ~ "vpast", 
+      IA_LABEL %in% det ~ "det", 
+      IA_LABEL %in% adv ~ "adv", 
+      IA_LABEL %in% adj ~ "adj", 
+      IA_LABEL %in% prep ~ "prep", 
+      IA_LABEL %in% clitics ~ "clitics", 
+      TRUE ~ "NA"
+    )
+  )
+
+
+
+glimpse(data)
 ```
 
 ```{r}
-data <- read.csv("../data/proficiency.csv")
-```
 
-```{r}
+data$IA_LABEL %>% unique()
+data$word_type
+
+
+
 data %>%
   mutate(Word_Type = if_else(IA_LABEL == "Cuentan", "VPR", ""))
 
