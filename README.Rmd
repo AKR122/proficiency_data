@@ -10,5 +10,11 @@ library(tidyverse)
 ```
 
 ```{r}
-read.csv("../data/proficiency.csv")
+data <- read.csv("../data/proficiency.csv")
+```
+
+```{r}
+data %>%
+  mutate(Word_Type = if_else(IA_LABEL == "Cuentan", "VPR", ""))
+
 ```
