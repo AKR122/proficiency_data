@@ -86,13 +86,161 @@ data <- read_csv("./data/proficiency.csv") %>%
   )
 
 
-
 glimpse(data)
+
+
 ```
+
+``` {r}
+write.csv(data, "proficiency.csv")
+```
+
+``` {r}
+
+```
+
 
 ```{r}
 
-data$IA_LABEL %>% unique()
-data$word_type
+dat <- read_csv("./proficiency1.csv") %>%
+  mutate(
+    dele = case_when(
+      RECORDING_SESSION_LABEL == "es01" ~ "60", 
+      RECORDING_SESSION_LABEL == "es02" ~ "50",
+      RECORDING_SESSION_LABEL == "es03" ~ "61.67",
+      RECORDING_SESSION_LABEL == "es04" ~ "48.33",
+      RECORDING_SESSION_LABEL == "es05" ~ "51.67",
+      RECORDING_SESSION_LABEL == "es06" ~ "43.33",
+      RECORDING_SESSION_LABEL == "es07" ~ "55",
+      RECORDING_SESSION_LABEL == "es10" ~ "43.33",
+      RECORDING_SESSION_LABEL == "es09" ~ "65",
+      RECORDING_SESSION_LABEL == "es11" ~ "48.33",
+      RECORDING_SESSION_LABEL == "es12" ~ "53.33",
+      RECORDING_SESSION_LABEL == "es13" ~ "56.67",
+      RECORDING_SESSION_LABEL == "es15" ~ "50",
+      RECORDING_SESSION_LABEL == "es17" ~ "40",
+      RECORDING_SESSION_LABEL == "es19" ~ "61.67",
+      RECORDING_SESSION_LABEL == "es20" ~ "41.67",
+      RECORDING_SESSION_LABEL == "es22" ~ "51.67",
+      RECORDING_SESSION_LABEL == "es23" ~ "56.67",
+      RECORDING_SESSION_LABEL == "es24" ~ "50",
+      RECORDING_SESSION_LABEL == "es27" ~ "51.67",
+      RECORDING_SESSION_LABEL == "es26" ~ "73.33",
+      RECORDING_SESSION_LABEL == "es49" ~ "65",
+      RECORDING_SESSION_LABEL == "es57" ~ "45",
+      RECORDING_SESSION_LABEL == "es58" ~ "45",
+      RECORDING_SESSION_LABEL == "es59" ~ "65",
+      RECORDING_SESSION_LABEL == "es60" ~ "55",
+      RECORDING_SESSION_LABEL == "es61" ~ "56.67",
+      RECORDING_SESSION_LABEL == "es62" ~ "46.67",
+      RECORDING_SESSION_LABEL == "es63" ~ "61.67",
+      RECORDING_SESSION_LABEL == "es64" ~ "45",
+      RECORDING_SESSION_LABEL == "es65" ~ "51",
+      RECORDING_SESSION_LABEL == "es08" ~ "70",
+      RECORDING_SESSION_LABEL == "es14" ~ "70",
+      RECORDING_SESSION_LABEL == "es16" ~ "75",
+      RECORDING_SESSION_LABEL == "es21" ~ "71.67",
+      RECORDING_SESSION_LABEL == "es25" ~ "73.33",
+      RECORDING_SESSION_LABEL == "es28" ~ "83.33",
+      RECORDING_SESSION_LABEL == "es29" ~ "80",
+      RECORDING_SESSION_LABEL == "es30" ~ "93.33",
+      RECORDING_SESSION_LABEL == "es31" ~ "70",
+      RECORDING_SESSION_LABEL == "es32" ~ "86.67",
+      RECORDING_SESSION_LABEL == "es33" ~ "91.67",
+      RECORDING_SESSION_LABEL == "es35" ~ "88.33",
+      RECORDING_SESSION_LABEL == "es36" ~ "91.67",
+      RECORDING_SESSION_LABEL == "es37" ~ "81.67",
+      RECORDING_SESSION_LABEL == "es38" ~ "78.33",
+      RECORDING_SESSION_LABEL == "es39" ~ "80",
+      RECORDING_SESSION_LABEL == "es40" ~ "91.67",
+      RECORDING_SESSION_LABEL == "es41" ~ "75",
+      RECORDING_SESSION_LABEL == "es42" ~ "85",
+      RECORDING_SESSION_LABEL == "es43" ~ "80",
+      RECORDING_SESSION_LABEL == "es44" ~ "75",
+      RECORDING_SESSION_LABEL == "es45" ~ "88",
+      RECORDING_SESSION_LABEL == "es46" ~ "70",
+      RECORDING_SESSION_LABEL == "es47" ~ "80",
+      RECORDING_SESSION_LABEL == "es48" ~ "73.33",
+      RECORDING_SESSION_LABEL == "es50" ~ "85",
+      RECORDING_SESSION_LABEL == "es51" ~ "88.33",
+      RECORDING_SESSION_LABEL == "es52" ~ "83.33",
+      RECORDING_SESSION_LABEL == "es53" ~ "80",
+      RECORDING_SESSION_LABEL == "es54" ~ "93.33",
+      RECORDING_SESSION_LABEL == "es55" ~ "75",
+      RECORDING_SESSION_LABEL == "rsa02" ~ "65",
+      RECORDING_SESSION_LABEL == "rsa05" ~ "65",
+      RECORDING_SESSION_LABEL == "rsa16" ~ "65",
+      RECORDING_SESSION_LABEL == "rsa20" ~ "65",
+      RECORDING_SESSION_LABEL == "rsa23" ~ "51.67",
+      RECORDING_SESSION_LABEL == "rsa24" ~ "63.33",
+      RECORDING_SESSION_LABEL == "rsa25" ~ "58.33",
+      RECORDING_SESSION_LABEL == "rsb01" ~ "65.45",
+      RECORDING_SESSION_LABEL == "rsb02" ~ "53.13",
+      RECORDING_SESSION_LABEL == "rsb03" ~ "43.75",
+      RECORDING_SESSION_LABEL == "rsb05" ~ "53.13",
+      RECORDING_SESSION_LABEL == "rsb06" ~ "62.5",
+      RECORDING_SESSION_LABEL == "rsb07" ~ "53.13",
+      RECORDING_SESSION_LABEL == "rsb08" ~ "45",
+      RECORDING_SESSION_LABEL == "rsb09" ~ "56.67",
+      RECORDING_SESSION_LABEL == "rsb10" ~ "55",
+      RECORDING_SESSION_LABEL == "rsb11" ~ "61.67",
+      RECORDING_SESSION_LABEL == "rsb12" ~ "51.67",
+      RECORDING_SESSION_LABEL == "rsb13" ~ "60",
+      RECORDING_SESSION_LABEL == "rsb14" ~ "41.67",
+      RECORDING_SESSION_LABEL == "rsb17" ~ "50",
+      RECORDING_SESSION_LABEL == "rsb18" ~ "58.33",
+      RECORDING_SESSION_LABEL == "rsb19" ~ "53.33",
+      RECORDING_SESSION_LABEL == "rsia02" ~ "59.38",
+      RECORDING_SESSION_LABEL == "rsia08" ~ "65.4",
+      RECORDING_SESSION_LABEL == "rsia10" ~ "53.33",
+      RECORDING_SESSION_LABEL == "rsia11" ~ "41.67",
+      RECORDING_SESSION_LABEL == "rsib02" ~ "62.5",
+      RECORDING_SESSION_LABEL == "rsib03" ~ "59.38",
+      RECORDING_SESSION_LABEL == "rsib05" ~ "65",
+      RECORDING_SESSION_LABEL == "rsib06" ~ "53.13",
+      RECORDING_SESSION_LABEL == "rsib11" ~ "59.38",
+      RECORDING_SESSION_LABEL == "rsa01" ~ "71.88",
+      RECORDING_SESSION_LABEL == "rsa03" ~ "71.88",
+      RECORDING_SESSION_LABEL == "rsa06" ~ "78.13",
+      RECORDING_SESSION_LABEL == "rsa07" ~ "81.25",
+      RECORDING_SESSION_LABEL == "rsa08" ~ "93.75",
+      RECORDING_SESSION_LABEL == "rsa10" ~ "90.63",
+      RECORDING_SESSION_LABEL == "rsa11" ~ "81.25",
+      RECORDING_SESSION_LABEL == "rsa12" ~ "93.75",
+      RECORDING_SESSION_LABEL == "rsa13" ~ "87.5",
+      RECORDING_SESSION_LABEL == "rsa14" ~ "86.67",
+      RECORDING_SESSION_LABEL == "rsa15" ~ "78.13",
+      RECORDING_SESSION_LABEL == "rsa17" ~ "87.5",
+      RECORDING_SESSION_LABEL == "rsa18" ~ "87.5",
+      RECORDING_SESSION_LABEL == "rsa19" ~ "80",
+      RECORDING_SESSION_LABEL == "rsa22" ~ "76.67",
+      RECORDING_SESSION_LABEL == "rsa26" ~ "83.33",
+      RECORDING_SESSION_LABEL == "rsa28" ~ "86.67",
+      RECORDING_SESSION_LABEL == "rsa29" ~ "90",
+      RECORDING_SESSION_LABEL == "rsb04" ~ "75",
+      RECORDING_SESSION_LABEL == "rsb15" ~ "86.67",
+      RECORDING_SESSION_LABEL == "rsia01" ~ "81.25",
+      RECORDING_SESSION_LABEL == "rsia03" ~ "78.13",
+      RECORDING_SESSION_LABEL == "rsia04" ~ "71.88",
+      RECORDING_SESSION_LABEL == "rsia05" ~ "87.5",
+      RECORDING_SESSION_LABEL == "rsia06" ~ "78.13",
+      RECORDING_SESSION_LABEL == "rsia07" ~ "75",
+      RECORDING_SESSION_LABEL == "rsia09" ~ "78.13",
+      RECORDING_SESSION_LABEL == "rsia13" ~ "75",
+      RECORDING_SESSION_LABEL == "rsib04" ~ "87.5",
+      RECORDING_SESSION_LABEL == "rsib07" ~ "81.25",
+      RECORDING_SESSION_LABEL == "rsib09" ~ "78.13",
+      RECORDING_SESSION_LABEL == "rsib10" ~ "75",
+      RECORDING_SESSION_LABEL == "rsib12" ~ "75",
+      RECORDING_SESSION_LABEL == "rsib13" ~ "73.33",
+      TRUE ~ "NA"
+    )
+  )
 
+write.csv(dat, "proficiency1.csv")
 ```
+
+``` {r}
+glimpse(dat)
+```
+
